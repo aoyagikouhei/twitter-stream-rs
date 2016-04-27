@@ -1,0 +1,6 @@
+[package]
+name = "twitter-stream"
+version = "0.0.1"
+authors = ["aoyagikouhei"]
+
+[dependencies]
