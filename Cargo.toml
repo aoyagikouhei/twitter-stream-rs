@@ -6,3 +6,4 @@ authors = ["aoyagikouhei"]
 [dependencies]
 time = "*"
 rand = "*"
+url = {version="*", features=["query_encoding"]}

@@ -1,6 +1,11 @@
 extern crate time;
 extern crate rand;
+extern crate url;
 
+mod param_list;
+mod encode;
+
+use param_list::*;
 use std::borrow::Cow;
 use rand::Rng;
 
@@ -41,6 +46,13 @@ impl<'a> TwitterStream<'a> {
     {
       return rand::thread_rng().gen_ascii_chars().take(32).collect::<String>();
     }
+
+    pub fn filter(&self, track: &'a str) -> String
+    {
+      let mut params = ParamList::new();
+      params.insert_param("abc", "efg");
+      return track.to_string();
+    }
 }
 
 #[cfg(test)]
@@ -52,5 +64,6 @@ mod tests {
         let ts = TwitterStream::new("ck", "cs", "ak", "as");
         assert!(ts.get_timestamp().len() > 0);
         assert!(ts.get_nonce().len() > 0);
+        assert_eq!(ts.filter("aaa"), "aaa");
     }
 }
